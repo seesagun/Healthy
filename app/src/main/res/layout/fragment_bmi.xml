@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <EditText
-        android:id="@+id/editText7"
+        android:id="@+id/bmi_h"
         android:layout_width="277dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="85dp"
@@ -14,35 +14,38 @@
         android:drawableStart="@drawable/ic_action_top"
         android:ems="10"
         android:hint="@string/height"
-        android:inputType="textPersonName"
+        android:inputType="number"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.483"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.087" />
+        app:layout_constraintVertical_bias="0.161" />
 
     <EditText
-        android:id="@+id/editText8"
+        android:id="@+id/bmi_w"
         android:layout_width="277dp"
         android:layout_height="52dp"
+        android:layout_marginBottom="12dp"
         android:layout_marginEnd="85dp"
         android:layout_marginStart="84dp"
         android:layout_marginTop="17dp"
         android:drawableStart="@drawable/ic_action_bo"
         android:ems="10"
         android:hint="@string/weight"
-        android:inputType="textPersonName"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/bmi_h"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.48"
+        app:layout_constraintHorizontal_bias="0.483"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText7" />
+        app:layout_constraintTop_toBottomOf="@+id/editText7"
+        app:layout_constraintVertical_bias="0.65999997" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/bmi_cal"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="319dp"
+        android:layout_marginBottom="344dp"
         android:layout_marginEnd="133dp"
         android:layout_marginStart="149dp"
         android:layout_marginTop="33dp"
@@ -54,4 +57,17 @@
         app:layout_constraintHorizontal_bias="0.544"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText8" />
+
+    <TextView
+        android:id="@+id/bmi_show"
+        android:layout_width="193dp"
+        android:layout_height="46dp"
+        android:layout_marginEnd="95dp"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="73dp"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bmi_cal" />
 </android.support.constraint.ConstraintLayout>
