@@ -29,18 +29,18 @@ public class LoginFragment extends Fragment {
         _loginBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                EditText _userId = (EditText) getView().findViewById(R.id.login_user_id);
+                EditText _email = (EditText) getView().findViewById(R.id.login_email);
                 EditText _password = (EditText) getView().findViewById(R.id.login_password);
-                String _useridString = _userId.getText().toString();
+                String _emailString = _email.getText().toString();
                 String _passwordString = _password.getText().toString();
-                if(_useridString.isEmpty() || _passwordString.isEmpty()){
+                if(_emailString.isEmpty() || _passwordString.isEmpty()){
                     Toast.makeText(
                             getActivity(),
                             "กรุณาระบุ user or password",
                             Toast.LENGTH_SHORT
                     ).show();
                     Log.d("USER","USER OR PASSWORD IS EMPTY");
-                }else if(_useridString.equals("admin") && _passwordString.equals("admin")){
+                }else if(_emailString.equals("admin") && _passwordString.equals("admin")){
                     getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new MenuFragment()).commit();
                     Log.d("USER","GOTO BMI");
                 }else{

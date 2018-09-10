@@ -2,6 +2,8 @@
     <string name="app_name">Healthy</string>
     <string name="user_id">User Id</string>
     <string name="password">Password</string>
+    <string name="re_pass">Re-Password</string>
+    <string name="email">Email</string>
     <string name="name">Name</string>
     <string name="age">Age</string>
     <string name="re_b">Register New Account</string>
