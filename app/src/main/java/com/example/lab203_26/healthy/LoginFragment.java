@@ -41,7 +41,7 @@ public class LoginFragment extends Fragment {
                     ).show();
                     Log.d("USER","USER OR PASSWORD IS EMPTY");
                 }else if(_useridString.equals("admin") && _passwordString.equals("admin")){
-                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new BMIFragment()).commit();
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new MenuFragment()).commit();
                     Log.d("USER","GOTO BMI");
                 }else{
                     Toast.makeText(getActivity(),"user or password ไม่ถูกต้อง",Toast.LENGTH_SHORT).show();

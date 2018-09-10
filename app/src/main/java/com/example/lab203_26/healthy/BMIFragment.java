@@ -32,15 +32,15 @@ public class BMIFragment extends Fragment {
                 EditText _weight = (EditText) getView().findViewById(R.id.bmi_w);
                 String _heightStr = _height.getText().toString();
                 String _weightStr = _weight.getText().toString();
-                int _weightInt = Integer.parseInt(_weightStr);
-                int _heightInt = Integer.parseInt(_heightStr);
+                float _weightInt = Integer.parseInt(_weightStr);
+                float _heightInt = Integer.parseInt(_heightStr);
                 double bmi;
                 if(_heightStr.isEmpty() || _weightStr.isEmpty()){
                     Toast.makeText(getActivity(),"กรุณาระบุข้อมูลให้ครบถ้วน",Toast.LENGTH_SHORT).show();
                     Log.d("USER","FIELD NAME IS EMPTY");
                 }
                 else{
-                    bmi = _weightInt / ((_heightInt/100)*(_heightInt/100));
+                    bmi = 60 / ((_heightInt*_heightInt)/10000);
                     bmi_show.setText(String.format("%.2f", bmi));
                     Log.d("USER","BMI IS VALUE");
                 }
