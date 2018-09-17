@@ -33,7 +33,7 @@ public class WeightAdapter extends ArrayAdapter {
         TextView _weight = _weightItem.findViewById(R.id.menu_item_weight);
         Weight _row = weight.get(position);
         _date.setText(_row.getDate());
-        _weight.setText(_row.getWeight());
+        _weight.setText(String.valueOf(_row.getWeight()));
         return _weightItem;
     }
 }

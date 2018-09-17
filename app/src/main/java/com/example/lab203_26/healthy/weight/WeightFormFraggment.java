@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +27,7 @@ public class WeightFormFraggment extends Fragment{
         super.onActivityCreated(savedInstanceState);
         _mStore = FirebaseFirestore.getInstance();
         _mAuth = FirebaseAuth.getInstance();
+        initSaveButton();
     }
 
     @Nullable
@@ -36,6 +38,14 @@ public class WeightFormFraggment extends Fragment{
 
     void initSaveButton() {
         Button _btn = getView().findViewById(R.id.w_save);
+        Button _btnBack = getView().findViewById(R.id.w_back);
+        _btnBack.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new WeightFragment()).commit();
+                Log.d("USER","GO BACK TO WEIGHT");
+            }
+        });
         _btn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {

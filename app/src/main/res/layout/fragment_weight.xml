@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/add_weight"
         android:layout_width="196dp"
         android:layout_height="wrap_content"
         android:text="@string/add_w"
