@@ -14,7 +14,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+
 public class LoginFragment extends Fragment {
+
+    private FirebaseAuth mAuth;
 
     @NonNull
     @Override
@@ -25,6 +32,7 @@ public class LoginFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle saveInstanceState){
         super.onActivityCreated(saveInstanceState);
+        mAuth = FirebaseAuth.getInstance();
         Button _loginBtn = getView().findViewById(R.id.login_button);
         _loginBtn.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -40,12 +48,27 @@ public class LoginFragment extends Fragment {
                             Toast.LENGTH_SHORT
                     ).show();
                     Log.d("USER","USER OR PASSWORD IS EMPTY");
-                }else if(_emailString.equals("admin") && _passwordString.equals("admin")){
-                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new MenuFragment()).commit();
-                    Log.d("USER","GOTO BMI");
                 }else{
-                    Toast.makeText(getActivity(),"user or password ไม่ถูกต้อง",Toast.LENGTH_SHORT).show();
-                    Log.d("USER","INVALID USER OR PASSWORD");
+                    mAuth.signInWithEmailAndPassword(_emailString,_passwordString).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                        @Override
+                        public void onSuccess(AuthResult authResult) {
+                            if(mAuth.getCurrentUser().isEmailVerified()) {
+                                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new MenuFragment()).commit();
+                                Log.d("LOGIN", "LOGIN SUCCESS AND GO TO MENU");
+                            } else {
+                                Toast.makeText(getActivity(), "กรุณายืนยัน email", Toast.LENGTH_LONG).show();
+                                Log.d("LOGIN", "Login unsucess and unconfirm email");
+                            }
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(getActivity(), "ERROR - " + e.getMessage(), Toast.LENGTH_LONG).show();
+                            Log.d("USER","ERROR - " + e.getMessage());
+                        }
+                    });
+                    //Toast.makeText(getActivity(),"user or password ไม่ถูกต้อง",Toast.LENGTH_SHORT).show();
+                    //Log.d("USER","INVALID USER OR PASSWORD");
                 }
             }
         });
