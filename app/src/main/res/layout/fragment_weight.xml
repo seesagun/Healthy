@@ -10,6 +10,8 @@
         android:layout_width="196dp"
         android:layout_height="wrap_content"
         android:text="@string/add_w"
+        android:background="@color/colorPrimary"
+        android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

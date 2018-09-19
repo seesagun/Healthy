@@ -13,6 +13,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.lab203_26.healthy.weight.WeightFragment;
+
 public class BMIFragment extends Fragment {
 
     @NonNull
@@ -24,6 +26,7 @@ public class BMIFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle saveInstanceState) {
         super.onActivityCreated(saveInstanceState);
         Button calBtn = getView().findViewById(R.id.bmi_cal);
+        Button _btnBack = getView().findViewById(R.id.bmi_back);
         final TextView bmi_show = getView().findViewById(R.id.bmi_show);
         calBtn.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -44,6 +47,13 @@ public class BMIFragment extends Fragment {
                     bmi_show.setText(String.format("%.2f", bmi));
                     Log.d("USER","BMI IS VALUE");
                 }
+            }
+        });
+        _btnBack.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new MenuFragment()).commit();
+                Log.d("USER","GO BACK TO MENU");
             }
         });
     }

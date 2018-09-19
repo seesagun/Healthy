@@ -33,6 +33,7 @@ public class LoginFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle saveInstanceState){
         super.onActivityCreated(saveInstanceState);
         mAuth = FirebaseAuth.getInstance();
+        checkCurrentUser();
         Button _loginBtn = getView().findViewById(R.id.login_button);
         _loginBtn.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -76,10 +77,17 @@ public class LoginFragment extends Fragment {
         _registerBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new RegisterFragment()).commit();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new RegisterFragment()).addToBackStack(null).commit();
                 Log.d("USER","GOTO REGISTER");
             }
         });
+    }
+
+    void checkCurrentUser() {
+        if(mAuth.getCurrentUser() != null) {
+            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new MenuFragment()).commit();
+            Log.d("USER", "SILL LOGIN, GO TO MENU");
+        }
     }
 
 }

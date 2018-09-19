@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.lab203_26.healthy.R;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -56,21 +57,25 @@ public class WeightFormFraggment extends Fragment{
                 String _weightStr = _weight.getText().toString();
                 String _uidStr = _mAuth.getCurrentUser().getUid();
 
-                Weight _dataWeight = new Weight(_dateStr, Integer.valueOf(_weightStr), "UP");
+                if(_dateStr.isEmpty() || _weightStr.isEmpty()) {
+                    Toast.makeText(getActivity(), "กรุณากรอกข้อมูลให้ครบถ้วน", Toast.LENGTH_LONG).show();
+                } else {
+                    Weight _dataWeight = new Weight(_dateStr, Integer.valueOf(_weightStr), "-");
 
-                _mStore.collection("myfitness").document(_uidStr)
-                        .collection("weight").document(_dateStr)
-                        .set(_dataWeight).addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-
-                    }
-                });
+                    _mStore.collection("myfitness").document(_uidStr)
+                            .collection("weight").document(_dateStr)
+                            .set(_dataWeight).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new WeightFragment()).commit();
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(getActivity(), "ERROR - " + e.getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    });
+                }
             }
         });
     }
