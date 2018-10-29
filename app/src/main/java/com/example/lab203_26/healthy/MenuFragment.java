@@ -29,6 +29,7 @@ public class MenuFragment extends Fragment{
         _menu.clear();
         _menu.add("BMI");
         _menu.add("Weight");
+        _menu.add("Sleep");
         _menu.add("Setup");
         _menu.add("Sign Out");
 
