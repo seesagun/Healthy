@@ -13,4 +13,7 @@
     <string name="add_w">Add Weight</string>
     <string name="day">วันที่ชั่ง</string>
     <string name="we">น้ำหนัก (kg)</string>
+    <string name="add_sleep">Add Sleep</string>
+    <string name="save_sleep">Save</string>
+    <string name="back_sleep">Back</string>
 </resources>

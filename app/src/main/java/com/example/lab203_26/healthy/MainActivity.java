@@ -1,5 +1,6 @@
 package com.example.lab203_26.healthy;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -9,6 +10,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        SQLiteDatabase myDB = openOrCreateDatabase("my.db", MODE_PRIVATE, null);
+        myDB.execSQL("CREATE TABLE IF NOT EXISTS sleep (_id INTEGER PRIMARY KEY AUTOINCREMENT, currentdate DATE, timetosleep VARCHAR(200), timetowakeup VARCHAR(200))");
         if(savedInstanceState == null){
             getSupportFragmentManager()
                     .beginTransaction()
