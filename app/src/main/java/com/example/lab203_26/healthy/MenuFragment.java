@@ -59,7 +59,11 @@ public class MenuFragment extends Fragment{
                             .addToBackStack(null)
                             .commit();
                 }else if(_menu.get(i).equals("Sleep")) {
-                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new SleepFragment()).commit();
+                    getActivity().getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.main_view, new SleepFragment())
+                            .addToBackStack(null)
+                            .commit();
                     Log.d("MENU", "Logout Completed");
                 }else if (_menu.get(i).equals("Sign Out")){
                     _mAuth.signOut();
