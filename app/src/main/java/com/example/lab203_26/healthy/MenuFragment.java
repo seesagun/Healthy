@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.lab203_26.healthy.Sleep.SleepFragment;
 import com.example.lab203_26.healthy.weight.WeightFragment;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -57,6 +58,9 @@ public class MenuFragment extends Fragment{
                             .replace(R.id.main_view, new WeightFragment())
                             .addToBackStack(null)
                             .commit();
+                }else if(_menu.get(i).equals("Sleep")) {
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new SleepFragment()).commit();
+                    Log.d("MENU", "Logout Completed");
                 }else if (_menu.get(i).equals("Sign Out")){
                     _mAuth.signOut();
                     getActivity().getSupportFragmentManager()
