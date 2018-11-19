@@ -74,6 +74,8 @@ public class RegisterFragment extends Fragment {
                     Toast.makeText(getActivity(),"ERROR -"+e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
+            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new LoginFragment()).commit();
+            Log.d("USER", "REGISTER SUCCESS PLEASE CHECK YOUR EMAIL INBOX TO VERIFICATION YOUR ACCOUNT");
         }
     }
     private void sendVertificationEmail(FirebaseUser _user){

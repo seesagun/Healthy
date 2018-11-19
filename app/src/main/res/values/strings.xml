@@ -16,4 +16,5 @@
     <string name="add_sleep">Add Sleep</string>
     <string name="save_sleep">Save</string>
     <string name="back_sleep">Back</string>
+    <string name="back_post">Back</string>
 </resources>
